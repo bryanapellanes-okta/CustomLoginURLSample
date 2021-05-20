@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Okta>
+    <ClientId>{Clientid}</ClientId>
+    <OktaDomain>{Use Custom Domain URL}</OktaDomain>
+    <RedirectUri>my.app.login:/callback</RedirectUri>
+    <PostLogoutRedirectUri>my.app.login:/callback</PostLogoutRedirectUri>
+    <Scope>openid profile offline_access</Scope>
+    <AuthorizationServerId>{Authorization Server Id}</AuthorizationServerId>
+</Okta>
