@@ -9,15 +9,19 @@ namespace CustomLoginUrlPOC
     {
         public ICommand LoginCommand { get; set; }
 
-        public MainPageViewModel()
+        public MainPageViewModel(MainPage mainPage)
         {
             LoginCommand = new Command(OnLogin);
+            Page = mainPage;
         }
+
+        public MainPage Page { get; set; }
 
         private void OnLogin()
         {
             try
             {
+                Page.DisplayAlert("Demo", "Starting Sign-in", "OK");
 
                 OktaContext.Current.SignInAsync();
 
@@ -25,6 +29,7 @@ namespace CustomLoginUrlPOC
                 ///This method is not getting triggered if Custom login URL is used for <OktaDomain>
                 OktaContext.Current.SignInCompleted += async (sender, args) =>
                 {
+                    await Page.DisplayAlert("Demo", "SignInCompleted event fired", "OK");
                     SignInEventArgs signInEventArgs = (SignInEventArgs)args;
                     IOktaStateManager oktaStateManager = signInEventArgs.StateManager;
                 };

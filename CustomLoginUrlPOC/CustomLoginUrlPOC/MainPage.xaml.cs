@@ -7,7 +7,7 @@ namespace CustomLoginUrlPOC
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainPageViewModel();
+            BindingContext = new MainPageViewModel(this);
         }
     }
 }
